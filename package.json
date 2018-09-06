@@ -1,0 +1,61 @@
+{
+    "name": "vs-code-extension-ns",
+    "displayName": "vs-code-extension-ns",
+    "description": "Hello World",
+    "version": "0.0.1",
+    "publisher": "natterstefan",
+    "engines": {
+        "vscode": "1.27.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello World"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "vs-code-extension-ns configuration",
+            "properties": {
+                "vscodens.text": {
+                    "type": "string",
+                    "default": "Hello World :)",
+                    "description": "Text"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "format": "eslint --fix ./src",
+        "lint": "eslint ./src",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "precommit": "lint-staged",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "lint-staged": {
+        "*.js": [
+            "npm run format",
+            "git add",
+            "npm run test"
+        ]
+    },
+    "devDependencies": {
+        "@types/mocha": "2.2.42",
+        "@types/node": "8.10.25",
+        "assert": "1.4.1",
+        "eslint": "4.11.0",
+        "eslint-config-ns": "0.2.0",
+        "husky": "0.14.3",
+        "lint-staged": "7.2.2",
+        "typescript": "2.6.1",
+        "vscode": "1.1.21"
+    }
+}
